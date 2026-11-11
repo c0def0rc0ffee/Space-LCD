@@ -1,0 +1,6 @@
+pyserial~=3.5
+Pillow>=11
+numpy>=2
+psutil>=7
+PySide6-Essentials>=6.8
+pyusb>=1.2

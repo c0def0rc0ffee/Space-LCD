@@ -1,0 +1,27 @@
+# <summary>
+# Space LCD: the systemd user service that drives the screen, installed by install.sh.
+# </summary>
+# <remarks>
+# Restart=always rather than on-failure because the upstream driver exits with status 0
+# when it cannot find the screen, and a cooler that is still waking should be retried.
+# The working directory is the state folder because importing the upstream driver writes
+# log.log wherever it runs. TimeoutStopSec covers the final "stopped" frame and a stored
+# video STOP; an upload takes well under a second, so a stop never cuts one short.
+# </remarks>
+
+[Unit]
+Description=Live system stats on the cooler's round screen
+After=default.target
+
+[Service]
+Type=simple
+Environment=PYTHONPATH=%h/.local/share/space-lcd/app
+Environment=PYTHONUNBUFFERED=1
+WorkingDirectory=%h/.local/state/space-lcd
+ExecStart=%h/.local/share/space-lcd/venv/bin/python -m space_lcd
+Restart=always
+RestartSec=10
+TimeoutStopSec=15
+
+[Install]
+WantedBy=default.target

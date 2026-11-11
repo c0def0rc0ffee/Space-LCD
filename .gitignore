@@ -1,0 +1,71 @@
+# Output folders from the packaging convention, root anchored
+/Space LCD Dist/
+/Space LCD Git/
+/Space LCD Web/
+/Space LCD App/
+/Space LCD Vite/
+
+# Output folders from before the rename to Space LCD (01/10/2026). Kept on disk, not
+# deleted, so they must stay ignored or the next build would sweep them into the Git zip.
+/CPU LCD Display Dist/
+/CPU LCD Display Git/
+/CPU LCD Display App/
+
+# Dependencies and build output
+node_modules/
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+*.egg-info/
+build/
+dist/
+target/
+bin/
+obj/
+coverage/
+
+# Archives, logs, temp
+*.zip
+*.7z
+*.tar.gz
+*.log
+*.tmp
+*.bak
+
+# Secrets. Both cases, because zip and gitignore matching is case sensitive.
+# Keep a committed *.example.* template beside anything real.
+.env
+.env.*
+!.env.example
+*credential*
+*Credential*
+*CREDENTIAL*
+*password*
+*Password*
+*PASSWORD*
+*secret*
+*Secret*
+*SECRET*
+*cred*
+*Cred*
+*token*
+*Token*
+*sftp*
+*SFTP*
+*ftp*
+*FTP*
+*.pem
+*.key
+*.pfx
+id_rsa*
+connection.txt
+*config.local*
+
+# Editor and OS noise
+.DS_Store
+*.swp
+Thumbs.db
+@eaDir/
+$RECYCLE.BIN/
